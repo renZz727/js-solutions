@@ -17,15 +17,15 @@ const testCases = [
   { expected: false, str1: "hwi", str2: {} },
   { expected: false, str1: " ", str2: null },
   { expected: false, str1: undefined, str2: " " },
-  { expected: false, str1: "", str2: true },
+  { expected: false, str1: " ", str2: true },
   { expected: false, str1: false, str2: " " },
+  { expected: false, str1: "", str2: " " },
 ];
 
 test(testCases);
 function test(testCases) {
   testCases.forEach((testCase, index) => {
     const result = isAnagram(testCase.str1, testCase.str2);
-
     if (testCase.expected === result)
       console.log(`Testcase ${index + 1} passed`);
     else console.log(`Testcase ${index + 1} failed`);
@@ -48,4 +48,3 @@ function isAnagram(s, t) {
   return true;
 }
 
-// console.log(isAnagram("carrace", "Racecar"));
