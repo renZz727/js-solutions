@@ -3,9 +3,9 @@ const testCases = [
   { expected: 12, input: [10, 11, 13, 14, 15] },
   { expected: 1, input: [2, 3, 4, 5, 6] },
   { expected: 1, input: [-3, -2, -1, 0, 2] },
-  { expected: "invalid", input: [4, 3, 2, 1] },
+  { expected: 0, input: [4, 3, 2, 1] },
   { expected: "invalid", input: [2, 5, 6] },
-  { expected: "invalid", input: [] },
+  { expected: false, input: [] },
   { expected: false, input: { n: 1, m: 3, o: 4 } },
   { expected: false, input: 44 },
   { expected: false, input: "[-3, -2, -1, 0, 2]" },
@@ -20,7 +20,6 @@ function test(testCases) {
   testCases.forEach((testCase, index) => {
     const result = missingNumber(testCase.input);
 
-    // console.log(testCase.expected, "  ", result);
     if (testCase.expected === result)
       console.log(`Testcase ${index + 1} passed`);
     else console.log(`Testcase ${index + 1} failed`);
@@ -28,18 +27,19 @@ function test(testCases) {
 }
 
 function missingNumber(arr) {
-  if (!Array.isArray(arr) || arr === null) return false;
-  let max = 0;
-  let min = 1000;
-  for (let i = 1; i < arr.length; i++) {
-    now = arr[i] - arr[i - 1];
-    if (now > max) max = now;
-    if (now < min) min = now;
-  }
+  if (!Array.isArray(arr) || arr === null || arr.length === 0) return false;
+  arr.sort();
+  // let max = 0;
+  // let min = 1000;
+  // for (let i = 1; i < arr.length; i++) {
+  //   now = arr[i] - arr[i - 1];
+  //   if (now > max) max = now;
+  //   if (now < min) min = now;
+  // }
   // console.log(max, min);
-  if (max > 2 || min < 0) return "invalid";
+  // if (max > 2 || min < 0) return "invalid";
+  // if (arr.length === 0) return "invalid";
   let fullArray = [];
-  if (arr.length === 0) return "invalid";
   for (let i = arr[0]; i <= arr[arr.length - 1]; i++) {
     fullArray.push(i);
   }
