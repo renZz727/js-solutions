@@ -24,6 +24,10 @@ const testCases = [
     input: ["care"],
   },
   {
+    expected: false,
+    input: ["43", "34"],
+  },
+  {
     expected: [],
     input: [],
   },
@@ -92,6 +96,7 @@ function groupAnagram(words) {
   if (!Array.isArray(words)) return false;
   const map = new Map();
   for (const word of words) {
+    if(!isNaN(Number(word))) return false;
     const key = word.split("").sort().join("");
     if (!map.has(key)) map.set(key, []);
     map.get(key).push(word);
@@ -99,4 +104,3 @@ function groupAnagram(words) {
   return [...map.values()].sort((a, b) => b.length - a.length);
 }
 
-// console.log(groupAnagram(["eat", "tea", "tan", "ate", "nat", "bat"]));
