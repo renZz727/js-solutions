@@ -9,6 +9,7 @@ const testCases = [
   { expected: false, input: { n1: 1, n2: 2, n3: 3, n4: 4 } },
   { expected: false, input: {} },
   { expected: false, input: 10 },
+  { expected: false, input: ["2", 4, "6", 8, 10] },
   { expected: false, input: "[1, 3, 5, 7, 9]" },
   { expected: false, input: true },
   { expected: false, input: false },
@@ -40,6 +41,7 @@ function evenNumbers(arr) {
   if (!Array.isArray(arr) || arr === null) return false;
   let evenNumbers = [];
   for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] !== "number") return false;
     if (arr[i] % 2 === 0) evenNumbers.push(arr[i]);
   }
   return evenNumbers;

@@ -8,9 +8,10 @@ const testCases = [
   { expected: true, str1: "pool", str2: "loop" },
   { expected: true, str1: "now", str2: "own" },
   { expected: true, str1: "low", str2: "owl" },
+  { expected: false, str1: "447", str2: "744" },
   { expected: false, str1: " ", str2: "world" },
   { expected: false, str1: "hello", str2: " " },
-  { expected: true, str1: " ", str2: " " },
+  { expected: false, str1: " ", str2: " " },
   { expected: false, str1: [], str2: "world" },
   { expected: false, str1: " ", str2: [] },
   { expected: false, str1: [], str2: [] },
@@ -34,6 +35,7 @@ function test(testCases) {
 
 function isAnagram(s, t) {
   if (typeof s !== "string" || typeof t !== "string") return false;
+  if (!isNaN(Number(+s)) || !isNaN(Number(+t))) return false;
   if (s.length !== t.length) return false;
   s = s.toLowerCase();
   t = t.toLowerCase();
@@ -47,4 +49,3 @@ function isAnagram(s, t) {
   }
   return true;
 }
-

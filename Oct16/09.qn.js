@@ -22,7 +22,6 @@ test(testCases);
 function test(testCases) {
   testCases.forEach((testCase, index) => {
     const result = isValidEmail(testCase.input);
-    let flag = true;
 
     if (testCase.expected === result)
       console.log(`Testcase ${index + 1} passed`);
@@ -32,6 +31,8 @@ function test(testCases) {
 
 function isValidEmail(email) {
   if (typeof email !== "string") return false;
+  const space = email.split(" ");
+  if (space.length !== 1) return false;
   const parts = email.split("@");
   if (parts.length !== 2) return false;
   const [local, domain] = parts;

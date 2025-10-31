@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key Details</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        background-color: rgb(169, 90, 90);
+      }
+      .container {
+        background-color: rgb(119, 35, 35);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding: 100px;
+        width: 400px;
+      }
+      table {
+        margin: 24px;
+        color: rgb(255, 242, 0);
+        font-size: 24px;
+      }
+      td {
+        color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 style="color: #fff; font-size: 36px">ENTER KEYS</h2>
+      <input id="input" type="text" />
+      <table id="add" cellspacing="20"></table>
+    </div>
+    <script>
+      const input = document.getElementById("input");
+      const add = document.getElementById("add");
+
+      let list = [];
+      input.addEventListener("keydown", (e) => {
+        if (list.length >= 10) {
+          list.splice(0, 1);
+        }
+        let obj = {};
+        obj["keyCode"] = e.keyCode;
+        obj["Code"] = e.code;
+        obj["Key"] = e.key;
+        list.push(obj);
+        console.log(list);
+        add.innerHTML = `
+              <tr>
+                <th>Key Code</th>
+                <th>Code</th>
+                <th>Key</th>
+              </tr>`;
+        for (item in list) {
+          for (i of item) {
+            add.insertAdjacentHTML(
+              "beforeend",
+              `
+              <tr>
+                <td>${list[i].Key}</td> 
+                <td>${list[i].Code}</td>
+                <td>${list[i].keyCode}</td>
+                </tr>`
+            );
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

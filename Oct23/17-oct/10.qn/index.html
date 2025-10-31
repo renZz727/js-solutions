@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capture</title>
+    <style>
+      body {
+        background: url("assets/images/background.jpg");
+        position: relative;
+        font-family: cursive;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      body::before {
+        content: "";
+        background-color: rgb(255, 255, 255, 0.5);
+        position: absolute;
+      }
+      .headSection {
+        padding: 36px;
+        display: flex;
+        gap: 24px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h1 {
+        font-size: 42px;
+      }
+      button {
+        font-size: 16px;
+        padding: 16px;
+        border-radius: 12px;
+        background-color: rgb(233, 140, 19);
+        color: white;
+        border: none;
+      }
+      button:hover {
+        background-color: rgb(245, 161, 51);
+      }
+      .inputSection input {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        border-radius: 12px;
+        border: none;
+      }
+      #imagesDisplay {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      #imagesDisplay img {
+        width: 250px;
+        height: 205px;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="headSection">
+      <h1>Capture</h1>
+      <div class="inputSection">
+        <input type="file" id="inputImages" accept="image/*" multiple />
+        <button onclick="showImage()">Submit</button>
+      </div>
+    </div>
+    <div id="imagesDisplay">
+      <p id="noImage" style="display: none">Upload images to see</p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

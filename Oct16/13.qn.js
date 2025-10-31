@@ -4,6 +4,7 @@ const testCases = [
   { expected: "programming", input: ["programming", "is", "fun"] },
   { expected: "fun", input: ["is", "is", "fun"] },
   { expected: "fun", input: ["fun", "is", "fun"] },
+  { expected: false, input: ["425", "fun", "is", "fun"] },
   { expected: false, input: [1, 2, 3, 4, 5] },
   { expected: false, input: [] },
   { expected: false, input: { val1: "fun", val2: "is", val3: "fun" } },
@@ -30,6 +31,7 @@ function longestWord(arr) {
   if (!Array.isArray(arr) || arr === null) return false;
   if (arr.length === 0) return false;
   for (let i = 0; i < arr.length; i++) {
+    if(!isNaN(+arr[i])) return false;
     if (typeof arr[i] !== "string") return false;
   }
   const result = arr.sort((b, a) => a.length - b.length);

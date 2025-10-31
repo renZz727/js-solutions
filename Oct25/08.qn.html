@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add data</title>
+    <style>
+      body {
+        background-color: rgb(217, 208, 227);
+        color: #e05f5f;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      ul {
+        list-style-type: decimal;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 style="text-align: center">Use "Shift + A"</h2>
+      <div>
+        <ul id="output"></ul>
+      </div>
+    </div>
+    <script>
+      const output = document.getElementById("output");
+      const list = ["pen", "pencil", "bottle", "laptop", "bag"];
+      let showItem = false;
+      for (let item = 0; item < 3; item++) {
+        output.insertAdjacentHTML("beforeend", `<li>${list[item]}</li>`);
+      }
+
+      window.addEventListener("keypress", (e) => {
+        output.textContent = "";
+        if ((e.key === "a" || e.key === "A") && e.shiftKey === true) {
+          showItem = !showItem;
+          if (showItem) {
+            for (let i = 0; i < 5; i++) {
+              output.insertAdjacentHTML("beforeend", `<li>${list[i]}</li>`);
+            }
+          } else {
+            for (let item = 0; item < 3; item++) {
+              output.insertAdjacentHTML("beforeend", `<li>${list[item]}</li>`);
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add data</title>
+    <style>
+      ul {
+        list-style-type: decimal;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding: 100px;
+        width: 400px;
+      }
+      table {
+        margin: 24px;
+        color: rgb(255, 242, 0);
+        font-size: 24px;
+      }
+      td {
+        color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Add items</h1>
+      <div class="inputsection">
+        <input id="input" type="text" />
+        <button id="btn">ADD</button>
+      </div>
+      <div>
+        <ul id="output"></ul>
+      </div>
+    </div>
+    <script>
+      const input = document.getElementById("input");
+      const output = document.getElementById("output");
+      const button = document.getElementById("btn");
+      const list = [];
+
+      button.addEventListener("click", () => {
+        output.textContent = "";
+        list.push(input.value);
+        console.log(list);
+        for (item of list) {
+          output.insertAdjacentHTML("beforeend", `<li>${item}</li>`);
+          input.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>

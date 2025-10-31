@@ -3,6 +3,7 @@ const testCases = [
   { expected: [100, 355, 23, 53], input: [100, 355, 0, 23, 53, 1, 5, 9] },
   { expected: [], input: [0, 1, 2, 3, 4, 5, 6] },
   { expected: [11, 12, 13, 14], input: [10, 11, 12, 13, 14] },
+  { expected: false, input: [10, 11, 12, 13, "14"] },
   { expected: [], input: [10] },
   { expected: [], input: [] },
   { expected: false, input: null },
@@ -22,7 +23,6 @@ function test(testCases) {
     const result = myFilter(testCase.input);
     let flag = true;
 
-    // console.log(typeof testCase.expected, " ", result);
     if (typeof result !== typeof testCase.expected) flag = false;
     if (typeof result === "boolean") {
       if (result === testCase.expected) {
@@ -40,9 +40,12 @@ function test(testCases) {
 
 function myFilter(arr) {
   if (!Array.isArray(arr)) return false;
-  filtered = [];
+  const filtered = [];
+  let flag = 0;
   arr.forEach((element) => {
+    if (typeof element !== "number") flag = 1;
     if (element > 10) filtered.push(element);
   });
+  if(flag === 1) return false;
   return filtered;
 }

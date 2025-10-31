@@ -3,6 +3,7 @@ const testCases = [
   { expected: 12, input: [10, 11, 13, 14, 15] },
   { expected: 1, input: [2, 3, 4, 5, 6] },
   { expected: 1, input: [-3, -2, -1, 0, 2] },
+  { expected: false, input: [-3, -2, "-1", 0, 2] },
   { expected: 0, input: [4, 3, 2, 1] },
   { expected: "invalid", input: [2, 5, 6] },
   { expected: false, input: [] },
@@ -29,18 +30,9 @@ function test(testCases) {
 function missingNumber(arr) {
   if (!Array.isArray(arr) || arr === null || arr.length === 0) return false;
   arr.sort();
-  // let max = 0;
-  // let min = 1000;
-  // for (let i = 1; i < arr.length; i++) {
-  //   now = arr[i] - arr[i - 1];
-  //   if (now > max) max = now;
-  //   if (now < min) min = now;
-  // }
-  // console.log(max, min);
-  // if (max > 2 || min < 0) return "invalid";
-  // if (arr.length === 0) return "invalid";
   let fullArray = [];
   for (let i = arr[0]; i <= arr[arr.length - 1]; i++) {
+    if (typeof i !== "number") return false;
     fullArray.push(i);
   }
   let missing = null;

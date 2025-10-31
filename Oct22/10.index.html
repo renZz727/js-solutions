@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add data</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      ul {
+        list-style-type: decimal;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inputsection">
+        <input id="input" type="text" />
+        <button id="btn">ADD</button>
+      </div>
+      <div>
+        <ul id="output"></ul>
+      </div>
+    </div>
+    <script>
+      const input = document.getElementById("input");
+      const output = document.getElementById("output");
+      const button = document.getElementById("btn");
+      const list = ["pen", "pencil", "bottle", "laptop"];
+      let showItem = false;
+      button.addEventListener("click", () => {
+        output.textContent = "";
+        list.push(input.value);
+        console.log(list);
+        input.value = "";
+      });
+      window.addEventListener("keypress", (e) => {
+        output.textContent = "";
+        if ((e.key === "a" || e.key === "A") && e.shiftKey === true) {
+          showItem = !showItem;
+          if (showItem) {
+            for (item of list) {
+              output.insertAdjacentHTML("beforeend", `<li>${item}</li>`);
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

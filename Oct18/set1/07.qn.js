@@ -7,11 +7,12 @@ const testCases = [
   { expected: "#00b537", input: [0, 181, 55] },
   { expected: "#780b19", input: [120, 11, 25] },
   { expected: "#000bfc", input: [0, 11, 252] },
+  { expected: false, input: [0, "11", 252] },
   { expected: false, input: "[0, 11, 252]" },
-  { expected: false, input: { rgb: [0, 11, 252] } }, 
-  { expected: false, input: [] },	 
-  { expected: false, input: true },	 
-  { expected: false, input: false },	
+  { expected: false, input: { rgb: [0, 11, 252] } },
+  { expected: false, input: [] },
+  { expected: false, input: true },
+  { expected: false, input: false },
   { expected: false, input: undefined },
   { expected: false, input: null },
 ];
@@ -28,6 +29,9 @@ function test(testCases) {
 
 function rgbToHexCode(arr) {
   if (!Array.isArray(arr)) return false;
+  for (let num of arr) {
+    if (typeof num !== "number") return false;
+  }
   if (arr.length === 0) return false;
   const code1 =
     Math.floor(arr[0] / 16).toString(16) + (arr[0] % 16).toString(16);

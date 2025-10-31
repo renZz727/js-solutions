@@ -130,7 +130,6 @@ const testCases = [
 test(testCases);
 function test(testCases) {
   testCases.forEach((testCase, index) => {
-    console.log(typeof new Date(2025, 2, 13));
     const result = findBirthdays(testCase.input);
     let flag = true;
 

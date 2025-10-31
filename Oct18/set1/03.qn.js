@@ -20,7 +20,7 @@ const testCases = [
   { expected: false, input: undefined },
   { expected: false, input: null },
   { expected: false, input: { 1: null } },
-  { expected: false, input: { 1: ' ' } },
+  { expected: false, input: { 1: " " } },
 ];
 test(testCases);
 function test(testCases) {
@@ -53,7 +53,7 @@ function invert(obj) {
   if (typeof obj !== "object" || obj === null) return false;
   if (Array.isArray(obj)) return false;
   for (let key in obj) {
-    if (obj[key] === null || obj[key] === ' ') return false;
+    if (obj[key] === null || obj[key] === " ") return false;
     obj[obj[key]] = key;
     key = obj[key];
     delete obj[obj[key]];

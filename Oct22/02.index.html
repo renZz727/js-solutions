@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Displays text</title>
+    <style>
+      body {
+        background-color: rgb(151, 121, 177);
+      }
+      .outer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .inputSection {
+        display: flex;
+        gap: 20px;
+      }
+      .inputSection .toogle-btn {
+        background-color: rgb(60, 141, 200);
+        border-radius: 12px;
+      }
+      input {
+        border: none;
+        border-radius: 5px;
+        padding: 12px;
+      }
+      .toogle-btn button {
+        border: none;
+        padding: 20px;
+        border-radius: 12px;
+        background-color: rgb(60, 141, 200);
+      }
+      #hide {
+        background-color: blueviolet;
+      }
+      button:focus {
+        background-color: blueviolet;
+      }
+      #text {
+        font-size: 60px;
+        color: rgb(188, 191, 106);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <h2 style="color: #fff;font-size: 48px;">Enter text in the input field</h2>
+      <div class="inputSection">
+        <input type="textarea" id="textarea" />
+        <div class="toogle-btn">
+          <button id="displaybtn">DISPLAY</button>
+          <button id="hide">HIDE</button>
+        </div>
+      </div>
+      <div id="display">
+        <p id="text"></p>
+      </div>
+    </div>
+    <script>
+      const input = document.getElementById("textarea");
+      const display = document.getElementById("displaybtn");
+      const hide = document.getElementById("hide");
+      const textDisplay = document.getElementById("text");
+      let text = "";
+      input.addEventListener("keypress", (event) => {
+        text += event.key;
+        console.log(text);
+      });
+      display.addEventListener("click", (event) => {
+        display.style.backgroundColor = "blueviolet";
+        hide.style.backgroundColor = `rgb(60, 141, 200)`;
+        textDisplay.textContent = text;
+      });
+      hide.addEventListener("click", (event) => {
+        display.style.backgroundColor = `rgb(60, 141, 200)`;
+        hide.style.backgroundColor = "blueviolet";
+        textDisplay.textContent = "";
+      });
+    </script>
+  </body>
+</html>

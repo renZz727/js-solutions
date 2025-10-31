@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display window size</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgb(232, 227, 119);
+      }
+      p {
+        font-family: monospace;
+        color: blue;
+        font-size: 36px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>WIDTH : <span id="width"></span></p>
+      <p>HEIGHT : <span id="height"></span></p>
+    </div>
+    <script>
+      const width = document.getElementById("width");
+      const height = document.getElementById("height");
+      console.log(window.innerHeight);
+      width.textContent = window.innerWidth;
+      height.textContent = window.innerHeight;
+      window.addEventListener("resize", () => {
+        height.textContent = window.innerWidth;
+        width.innerHTML = window.innerHeight;
+      });
+    </script>
+  </body>
+</html>

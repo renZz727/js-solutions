@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Bar</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(116, 23, 8);
+      }
+
+      #container {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        height: 700px;
+        padding: 30px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        background-color: rgb(179, 151, 116);
+      }
+      .scroll {
+        position: fixed;
+        top: 830px;
+        left: 0px;
+        width: 100%;
+        height: 20px;
+        background-color: rgb(216, 232, 227);
+      }
+      #scrollBar {
+        width: 0%;
+        height: 20px;
+        background-color: rgb(19, 52, 22);
+        border-radius: 0 12px 12px 0;
+      }
+      h1 {
+        font-size: 48px;
+      }
+      p {
+        font-size: 36px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1 style="text-align: center">Lorem ipsum dolor sit</h1>
+      <h3 style="color: maroon; font-weight: bold">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, quis.
+      </h3>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus
+        commodi nobis molestiae voluptatum laborum ex, corporis at voluptas
+        tempore! Exercitationem, tempore. At iure aperiam ab labore, aspernatur
+        optio enim officiis similique quaerat impedit, cumque qui.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dicta
+        quos mollitia non veritatis! Ipsam, exercitationem ex dolor, inventore
+        similique deserunt, esse eveniet eos perferendis amet perspiciatis
+        facilis voluptatibus. Minima!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam nisi at
+        illo natus, minus architecto tempora reiciendis corporis quis expedita
+        possimus, impedit earum, odit magni asperiores totam quibusdam. Natus
+        repellendus pariatur, vel voluptates vero quidem impedit libero
+        molestiae error atque!
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, debitis!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe rem
+        perspiciatis at culpa fuga eos odio. Cupiditate labore officia at ea
+        quis nesciunt ipsa voluptas delectus, eos eaque ab sed, maiores quasi in
+        fugit, alias quo hic laborum dicta pariatur mollitia impedit facilis!
+        Iure debitis totam, blanditiis non fugiat repellat!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam odit
+        repellendus aliquid eaque quidem dolorem soluta architecto recusandae
+        tempora tempore, facilis nobis dolor magni voluptatum explicabo maiores
+        dicta ad veniam optio vitae aspernatur atque obcaecati beatae. Tenetur
+        nobis, et nostrum autem ducimus provident facilis impedit in.
+      </p>
+      <div class="scroll">
+        <div id="scrollBar"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

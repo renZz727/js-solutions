@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(43, 90, 104);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 700px;
+  padding: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: antiquewhite;
+}
+.scroll {
+  position: fixed;
+  top: 830px;
+  left: 0px;
+  width: 100%;
+  height: 20px;
+  background-color: rgb(216, 232, 227);
+}
+#scrollBar {
+  width: 0%;
+  height: 20px;
+  background-color: rgb(241, 160, 53);
+  border-radius: 0 12px 12px 0;
+}
+h1 {
+  font-size: 48px;
+}
+p {
+  font-size: 36px;
+}

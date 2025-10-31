@@ -32,6 +32,8 @@ function test(testCases) {
 
 function isValidEmail(email) {
   if (typeof email !== "string") return false;
+  const space = email.split(" ");
+  if (space.length !== 1) return false;
   const parts = email.split("@");
   if (parts.length !== 2) return false;
   const [local, domain] = parts;

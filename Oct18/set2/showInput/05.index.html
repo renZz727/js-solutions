@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show Input</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(61, 117, 138);
+        position: relative;
+      }
+
+      .inputField {
+        background-color: rgb(30, 27, 27);
+        color: white;
+        border-radius: 12px;
+        margin-top: 200px;
+      }
+      label {
+        padding: 12px;
+      }
+      #input {
+        padding: 18px;
+        border-radius: 0 12px 12px 0;
+      }
+      #display {
+        font-family: "Times New Roman", Times, serif;
+        position: absolute;
+        top: 300px;
+        font-size: 36px;
+        color: #e1d510;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="inputField">
+      <label for="input">Name </label>
+      <input type="text" id="input" />
+    </div>
+    <p id="display"></p>
+
+    <script>
+      function keyReleased(e) {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () {
+          display.textContent = "Hello " + result;
+        }, waitingTime);
+      }
+      function keyPressed(e) {
+        window.clearTimeout(timer);
+        // console.log(e.key);
+        result += e.key;
+        // console.log(result
+        // );
+      }
+
+      const input = document.getElementById("input");
+      const display = document.getElementById("display");
+      input.addEventListener("keypress", keyPressed);
+      input.addEventListener("keyup", keyReleased);
+      let result = "";
+      let timer;
+      let waitingTime = 900;
+
+      console.log(input);
+    </script>
+  </body>
+</html>

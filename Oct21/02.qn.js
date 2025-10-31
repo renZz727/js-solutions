@@ -1,6 +1,7 @@
 const testCases = [
   { expected: { hello: 2, world: 2 }, input: "Hello hello world, world!" },
   { expected: { hello: 2, world: 1 }, input: "Hello hello world," },
+  { expected: false, input: "Hello hello 454," },
   { expected: { i: 3, j: 3, k: 3 }, input: "i i i j j j k k k" },
   { expected: false, input: undefined },
   { expected: false, input: 135 },
@@ -66,7 +67,7 @@ function frequencyCount(sentence) {
   for (let i = 0; i < words.length; i++) {
     let count = 0;
     for (let j = 0; j < words.length; j++) {
-      if (typeof words[i] !== "string") return false;
+      if (typeof words[i] !== "string" || !isNaN(Number(+words[i]))) return false;
       if (words[i] === words[j]) {
         count++;
       }

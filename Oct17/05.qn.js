@@ -5,6 +5,7 @@ const testCases = [
   { expected: 1, input: [-1, 2] },
   { expected: -2, input: [-1, -1] },
   { expected: -20, input: [10, 20, -4, -4, 28, -70] },
+  { expected: false, input: [10, "20", -4, -4, "28", -70] },
   { expected: false, input: ["1, 2"] },
   { expected: false, input: ["1", "2"] },
   { expected: false, input: "1, 2, 3, 4, 5" },
@@ -33,10 +34,9 @@ function findSum(num) {
   if (!Array.isArray(num)) return false;
   let sum = 0;
   for (let i = 0; i < num.length; i++) {
+    if(typeof num[i] !== "number") return false;
     if (typeof num[i] !== "number") return false;
     sum += num[i];
   }
   return sum;
 }
-// console.log(findSum(1, 2, 3, 4));
-// console.log(findSum(1, 2));

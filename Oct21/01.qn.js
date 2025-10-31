@@ -5,6 +5,7 @@ const testCases = [
   { expected: [10, 1, 3, 5], input: [1, 3, 5, 10] },
   { expected: [0], input: [0] },
   { expected: [2, 4, 6, 8], input: [2, 4, 6, 8] },
+  { expected: false, input: ["2", 4, "6", 8] },
   { expected: [], input: [] },
   { expected: false, input: ["10, 23"] },
   { expected: false, input: ["10"] },
@@ -13,7 +14,7 @@ const testCases = [
   { expected: false, input: { "num1, num2, num3": "2, 5, 7" } },
   { expected: false, input: "1, 3, 5, 7" },
   { expected: false, input: true },
-  { expected: true, input: false },
+  { expected: false, input: false },
 ];
 test(testCases);
 function test(testCases) {

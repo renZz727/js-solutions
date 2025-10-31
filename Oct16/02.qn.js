@@ -3,8 +3,9 @@ const testCases = [
   { expected: 5, input: "This is a sample sentence" },
   { expected: 3, input: "Programming is fun" },
   { expected: 1, input: "fun" },
-  { expected: 0, input: "" },
-  { expected: 0, input: " " },
+  { expected: false, input: "23434" },
+  { expected: false, input: "" },
+  { expected: false, input: " " },
   { expected: false, input: 53 },
   { expected: false, input: { str: "Programming is fun" } },
   { expected: false, input: {} },
@@ -30,6 +31,7 @@ function test(testCases) {
 
 function wordCount(sentence) {
   if (typeof sentence !== "string") return false;
+  if (!isNaN(Number(sentence.replace(" ", "")))) return false;
   if (sentence === "" || sentence === " ") return 0;
   let words = sentence.split(" ");
   return words.length;
