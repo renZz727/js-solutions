@@ -1,14 +1,15 @@
-function countDown(target) {
-  const currentDate = new Date();
-  const targetDate = new Date(target);
-  console.log(targetDate - currentDate);
-  const sec = (targetDate - currentDate) / 1000;
-  const min = sec / 60;
-  const hr = min / 60;
-  const days = hr / 24;
-  console.log(
-    `${days.toFixed()} days ${hr.toFixed()} hours ${min.toFixed()} minutes and ${sec.toFixed()} seconds}`
-  );
+function countDown(targetDate) {
+  const target = new Date(targetDate).getTime();
+
+  const now = Date.now();
+  const rem = target - now;
+
+  const days = Math.floor(rem / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(rem / (1000 * 60 * 60)) % 24;
+  const minutes = Math.floor(rem / (1000 * 60)) % 60;
+  const seconds = Math.floor(rem / 1000) % 60;
+  if (rem < 0) return false;
+  return `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`.trim();
 }
 
-countDown("2025-10-26");
+countDown("2025-11-1");
