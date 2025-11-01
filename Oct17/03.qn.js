@@ -11,6 +11,47 @@ const testCases = [
       dataTypes: ["string", "number", "boolean", "object", "null", "undefined"],
     },
   },
+  {
+    expected: { num1: 470, num2: 340 },
+    input: {
+      num1: 470,
+      num2: 340,
+    },
+  },
+  {
+    expected: false,
+    input: ["21", 31],
+  },
+  {
+    expected: { val: ["21", 31] },
+    input: { val: ["21", 31] },
+  },
+  {
+    expected: false,
+    input: 476,
+  },
+  {
+    expected: false,
+    input: "476",
+  },
+  {
+    expected: false,
+    input: "[476]",
+  },
+  {
+    expected: { num: "{num: 476}" },
+    input: { num: "{num: 476}" },
+  },
+  {
+    expected: {
+      // name: "john",
+      age: 32,
+    },
+    input: {
+      name: "john",
+      age: 32,
+    },
+  },
 ];
 
 test(testCases);
@@ -26,15 +67,17 @@ function test(testCases) {
         console.log(`Testcase ${index + 1} passed`);
       } else console.log(`Testcase ${index + 1} failed`);
     } else {
-      console.log("sd");
       const testExpected = testCase.expected;
       for (let key in testExpected) {
-        if (
-          !testExpected.hasOwnProperty(key) ||
-          result[key] !== testExpected[key]
-        )
-          console.log(result[key] === testExpected[key]);
-        flag = false;
+        if (result.hasOwnProperty(key)) {
+          if (Array.isArray(testExpected[key])) {
+            for (let m = 0; m < testExpected.length; m++) {
+              if (testCase.expected[m] !== result[m]) flag = false;
+            }
+          } else {
+            if (testCase.expected[key] !== result[key]) flag = false;
+          }
+        }
       }
       if (flag === true) console.log(`Testcase ${index + 1} passed`);
       else console.log(`Testcase ${index + 1} failed`);
@@ -43,6 +86,8 @@ function test(testCases) {
 }
 
 function objectClone(obj) {
+  if (typeof obj !== "object") return false;
+  if (Array.isArray(obj) && typeof obj === "object") return false;
   let newObj = {};
   for (item in obj) {
     newObj[item] = obj[item];

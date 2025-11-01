@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Truncate Text</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+      li {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>List Item</p>
+      <ul style="max-width: 50px">
+        <li>Apple Cider vinegar</li>
+        <li>Orange Juice</li>
+        <li>WaterMelon Shake</li>
+        <li>Green Apple</li>
+        <li>Strawberry Shake</li>
+      </ul>
+      <div class="toolbox">
+        <p>display here..</p>
+        <p id="display" style="border: 1px solid black; height: 40px"></p>
+      </div>
+    </div>
+    <script>
+      const listItems = document.querySelector("ul");
+      const display = document.getElementById("display");
+      const flag = true;
+      const items = [];
+
+      listItems.addEventListener("mouseover", (e) => {
+        display.textContent = e.target.textContent;
+      });
+      listItems.addEventListener("mouseout", () => {
+        display.textContent = "";
+      });
+    </script>
+  </body>
+</html>

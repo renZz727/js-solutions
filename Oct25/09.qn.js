@@ -1,21 +1,42 @@
-function emailValidator(email) {
-  let spclChar = email.split("@");
-  let com = spclChar[1].split(".");
-  if (
-    spclChar.length == 2 &&
-    spclChar[1].includes(".") &&
-    com.length === 2 &&
-    com[1].length >= 2
-  ) {
-    return true;
-  }
-  return false;
+const testCases = [
+  { expected: true, input: "user@gmail.com" },
+  { expected: true, input: "user123@gmail.com" },
+  { expected: true, input: "ADMIN677@gmail.com" },
+  { expected: true, input: "user.123@gmail.com" },
+  { expected: false, input: "user@gamilcom" },
+  { expected: false, input: "user123gmail.com" },
+  { expected: false, input: "user.r@user@gmail.com" },
+  { expected: false, input: "user123@.gmail.com" },
+  { expected: false, input: "@gmail.com" },
+  { expected: false, input: "user123@" },
+  { expected: false, input: "user123@gmail.com." },
+  { expected: true, input: "user#$82,.123@gmail.com" },
+  { expected: false, input: "12344asdfa" },
+  { expected: false, input: {} },
+  { expected: false, input: [] },
+  { expected: false, input: 1234 },
+  { expected: false, input: undefined },
+  { expected: false, input: null },
+];
+test(testCases);
+function test(testCases) {
+  testCases.forEach((testCase, index) => {
+    const result = isValidEmail(testCase.input);
+
+    if (testCase.expected === result)
+      console.log(`Testcase ${index + 1} passed`);
+    else console.log(`Testcase ${index + 1} failed`);
+  });
 }
 
-console.log(emailValidator("invalid@email.com"));
-console.log(emailValidator("user@example.in"));
-console.log(emailValidator("test@example.com.com"));
-console.log(emailValidator("user@domain"));
-console.log(emailValidator("user@exa@p.le.c"));
-console.log(emailValidator("user@exa@email.com"));
-console.log(emailValidator("user@exa@email.com."));
+function isValidEmail(email) {
+  if (typeof email !== "string") return false;
+  const space = email.split(" ");
+  if (space.length !== 1) return false;
+  const parts = email.split("@");
+  if (parts.length !== 2) return false;
+  const [local, domain] = parts;
+  if (!local || !domain || domain.indexOf(".") === -1) return false;
+  if (domain.startsWith(".") || domain.endsWith(".")) return false;
+  return true;
+}
