@@ -38,7 +38,6 @@ function test(testCases) {
     const result = frequencyCount(testCase.input);
     let flag = true;
 
-    // console.log(typeof testCase.expected, " ", result);
     if (typeof result !== typeof testCase.expected) flag = false;
     if (typeof result === "boolean") {
       if (result === testCase.expected) {
@@ -67,7 +66,8 @@ function frequencyCount(sentence) {
   for (let i = 0; i < words.length; i++) {
     let count = 0;
     for (let j = 0; j < words.length; j++) {
-      if (typeof words[i] !== "string" || !isNaN(Number(+words[i]))) return false;
+      if (typeof words[i] !== "string" || !isNaN(Number(+words[i])))
+        return false;
       if (words[i] === words[j]) {
         count++;
       }

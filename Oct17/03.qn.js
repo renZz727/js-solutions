@@ -44,13 +44,45 @@ const testCases = [
   },
   {
     expected: {
-      // name: "john",
+      name: "john",
+      age: "32",
+    },
+    input: {
+      details: { name: "Doe", age: 21 },
+    },
+  },
+  {
+    expected: {
+      name: "john",
       age: 32,
     },
     input: {
       name: "john",
       age: 32,
     },
+  },
+  {
+    expected: { day: "thursday", year: 1990 },
+    input: {
+      day: "thursday",
+      year: 1990,
+    },
+  },
+  {
+    expected: false,
+    input: true,
+  },
+  {
+    expected: false,
+    input: false,
+  },
+  {
+    expected: false,
+    input: undefined,
+  },
+  {
+    expected: false,
+    input: null,
   },
 ];
 
@@ -60,7 +92,6 @@ function test(testCases) {
     const result = objectClone(testCase.input);
     let flag = true;
 
-    console.log(testCase.expected, "  ", result);
     if (typeof result !== typeof testCase.expected) flag = false;
     if (typeof result === "boolean") {
       if (result === testCase.expected) {
@@ -86,7 +117,7 @@ function test(testCases) {
 }
 
 function objectClone(obj) {
-  if (typeof obj !== "object") return false;
+  if (typeof obj !== "object" || obj === null) return false;
   if (Array.isArray(obj) && typeof obj === "object") return false;
   let newObj = {};
   for (item in obj) {
@@ -94,17 +125,3 @@ function objectClone(obj) {
   }
   return newObj;
 }
-
-// console.log(
-//   objectClone({
-//     name: "JavaScript",
-//     country: "US",
-//     dataTypes: ["string", "number", "boolean", "object", "null", "undefined"],
-//   })
-// );
-// console.log(
-//   objectClone({
-//     name: "John",
-//     employee: true,
-//   })
-// );
